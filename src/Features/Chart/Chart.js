@@ -24,7 +24,13 @@ function Chart() {
       return;
     }
     if (pastData.length === 0) return;
-
+    try { // try catch here due to amchart bug i cannot reproduce on demand
+      updateAxes(chart, pastData);
+      updateSeries(chart, pastData);
+    } catch(e) {
+      // do nothing
+      console.error(e);
+    }
   }, [pastData, selected]);
 
   useEffect(() => {

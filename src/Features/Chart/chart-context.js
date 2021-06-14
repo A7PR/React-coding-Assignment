@@ -11,7 +11,18 @@ function reducer(state, action) {
         pastData: action.payload,
       };
     }
-
+    case 'SELECT_METRIC': {
+      return {
+        ...state,
+        selected: action.payload,
+      };
+    }
+    case 'REMOVE_METRIC': {
+      return {
+        ...state,
+        selected: state.selected.filter(metric => metric !== action.payload),
+      };
+    }
     default:
       return state;
   }
