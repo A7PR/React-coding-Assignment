@@ -25,7 +25,8 @@ const slice = createSlice({
   reducers: {
     weatherDataRecevied: (state, action: PayloadAction<WeatherForLocation>) => { // dat typo tho
       const { description, locationName, temperatureinCelsius } = action.payload;
-
+      state.temperatureinCelsius = temperatureinCelsius;
+      state.temperatureinFahrenheit = toF(temperatureinCelsius);
       state.description = description;
       state.locationName = locationName;
     },
