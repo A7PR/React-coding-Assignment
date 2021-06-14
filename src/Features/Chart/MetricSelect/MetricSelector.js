@@ -41,7 +41,9 @@ function MetricSelector(props) {
       dispatch(actions.metricsApiErrorReceived({ error: error.message }));
       return;
     }
-
+    if (!data) return;
+    const { getMetrics } = data;
+    dispatch(actions.metricsReceived(getMetrics));
   }, [dispatch, data, error]);
 
   return (
